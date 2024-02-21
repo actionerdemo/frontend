@@ -4,15 +4,11 @@ on:
   workflow_dispatch:
     inputs:
       text_input:
-        description: 'Enter text parameter'
+        description: 'Environment'
         required: true
       dropdown_input:
-        description: 'Select an option'
+        description: 'Confirm'
         required: true
-        options:
-          option1: Option 1
-          option2: Option 2
-          option3: Option 3
 
 jobs:
   build:
