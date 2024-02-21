@@ -3,10 +3,10 @@ name: Manual Trigger Workflow
 on:
   workflow_dispatch:
     inputs:
-      text_input:
+      environment:
         description: 'Environment'
         required: true
-      dropdown_input:
+      confirm:
         description: 'Confirm'
         required: true
 
