@@ -1,0 +1,19 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      parameter:
+        description: 'Optional parameter for the workflow'
+        required: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Print Message
+      run: echo "This workflow was triggered manually"
