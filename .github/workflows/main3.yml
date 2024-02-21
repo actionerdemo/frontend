@@ -1,19 +1,31 @@
-name: Manual Workflow
+name: Manual Trigger Workflow
 
 on:
   workflow_dispatch:
     inputs:
-      parameter:
-        description: 'Optional parameter for the workflow'
-        required: false
+      text_input:
+        description: 'Enter text parameter'
+        required: true
+      dropdown_input:
+        description: 'Select an option'
+        required: true
+        options:
+          option1: prod
+          option2: lab
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
 
-    - name: Print Message
-      run: echo "This workflow was triggered manually"
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print Parameters
+        run: |
+          echo "Text input: ${{ github.event.inputs.text_input }}"
+          echo "Dropdown input: ${{ gith
