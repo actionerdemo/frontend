@@ -1,0 +1,28 @@
+name: Manual Trigger Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+      confirm:
+        description: 'Confirm'
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Print Parameters
+        run: |
+          echo "Text input: ${{ github.event.inputs.text_input }}"
+          echo "Dropdown input: ${{ github.event.inputs.dropdown_input }}"
